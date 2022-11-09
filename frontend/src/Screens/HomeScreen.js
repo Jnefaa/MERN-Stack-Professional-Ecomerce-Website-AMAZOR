@@ -6,6 +6,9 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useReducer } from "react";
 import axios from "axios";
 import Product from "../Components/Product";
+import { Helmet } from "react-helmet-async";
+import { Spinner } from "react-bootstrap";
+
 //import data from "../data";
 
 const reducer = (state, action) => {
@@ -44,10 +47,18 @@ function HomeScreen() {
 
   return (
     <div>
+      <Helmet>
+        <title>AmazoR</title>
+      </Helmet>
       <Row>
         <h1> Featured Products </h1>
         {loading ? (
-          <div> loading .. </div>
+          <div>
+            {" "}
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">loading...</span>
+            </Spinner>{" "}
+          </div>
         ) : error ? (
           <div> {error}</div>
         ) : (
