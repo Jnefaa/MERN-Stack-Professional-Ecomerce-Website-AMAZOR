@@ -10,7 +10,13 @@ import ProductScreen from "./Screens/ProductScreen";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
+import { Badge, Nav } from "react-bootstrap";
+import { useContext } from "react";
+import { Store } from "./Screens/Store";
 function App() {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <BrowserRouter ClassName="d-flex flex-column site-container">
       <div
@@ -23,6 +29,16 @@ function App() {
               <LinkContainer to="/">
                 <Navbar.Brand>AmazoR</Navbar.Brand>
               </LinkContainer>
+              <Nav className="me-auto">
+                <Link to="/cart" className="nav-Link">
+                  Cart
+                  {cart.cartItems.length > 0 && (
+                    <Badge pill bg="danger">
+                      {cart.cartItems.length}
+                    </Badge>
+                  )}
+                </Link>
+              </Nav>
               <LinkContainer to="/contact-us">
                 <Navbar.Brand>contact us </Navbar.Brand>
               </LinkContainer>
