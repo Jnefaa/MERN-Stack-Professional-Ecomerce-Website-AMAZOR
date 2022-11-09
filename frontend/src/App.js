@@ -13,6 +13,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Badge, Nav } from "react-bootstrap";
 import { useContext } from "react";
 import { Store } from "./Screens/Store";
+import CartScreen from "./Screens/CartScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -49,6 +50,7 @@ function App() {
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/cart" element={<CartScreen />}></Route>
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Rating from "../Components/Raiting";
 import { Helmet } from "react-helmet-async";
 import { Store } from "./Store";
@@ -19,6 +19,7 @@ const reducer = (state, action) => {
   }
 };
 function ProductScreen() {
+  const Navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
   // const [products, seProducts] = useState([]);
@@ -41,13 +42,24 @@ function ProductScreen() {
     };
     fetchdata();
   }, [slug]);
+
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const addToCartHand = () => {
+  const { cart } = state;
+  const addToCartHand = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const qauntity = existItem ? existItem.qauntity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < qauntity) {
+      window.alert("Sorry product is out of stock ");
+      return;
+    }
     ctxDispatch({
       type: "CART_ADD_ITEM",
       payload: { ...product, qauntity: 1 },
     });
+    Navigate("/cart");
   };
+
   return loading ? (
     <div>loading... </div>
   ) : error ? (
