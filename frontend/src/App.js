@@ -14,6 +14,7 @@ import { Badge, Nav } from "react-bootstrap";
 import { useContext } from "react";
 import { Store } from "./Screens/Store";
 import CartScreen from "./Screens/CartScreen";
+import SignInScreen from "./Screens/SigninScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -30,6 +31,13 @@ function App() {
               <LinkContainer to="/">
                 <Navbar.Brand>AmazoR</Navbar.Brand>
               </LinkContainer>
+
+              <LinkContainer to="/signin">
+                <Navbar.Brand>Sign In </Navbar.Brand>
+              </LinkContainer>
+              <LinkContainer to="/contact-us">
+                <Navbar.Brand>Contact us </Navbar.Brand>
+              </LinkContainer>
               <Nav className="me-auto">
                 <Link to="/cart" className="nav-Link">
                   Cart
@@ -40,9 +48,6 @@ function App() {
                   )}
                 </Link>
               </Nav>
-              <LinkContainer to="/contact-us">
-                <Navbar.Brand>contact us </Navbar.Brand>
-              </LinkContainer>
             </Container>
           </Navbar>
         </header>
@@ -52,6 +57,7 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />}></Route>
               <Route path="/" element={<HomeScreen />} />
+              <Route path="/signin" element={<SignInScreen></SignInScreen>} />
             </Routes>
           </Container>
         </main>

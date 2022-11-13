@@ -12,8 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http-proxy-middelware": "0.0.1-security",
+    "mongoose": "^6.7.2",
+    "mongose": "0.0.2-security",
     "nodemon": "^2.0.20"
   }
 }
