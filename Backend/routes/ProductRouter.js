@@ -5,6 +5,7 @@ const ProductRoute = expess.Router();
 
 ProductRoute.get("/", async (req, res) => {
   const products = await Product.find();
+  console.log(products);
   res.send(products);
 });
 
@@ -15,6 +16,7 @@ ProductRoute.get("/slug/:slug", async (req, res) => {
   const product = await Product.findOne({ slug: req.params.slug });
   if (product) {
     res.send(product);
+    console.log(product);
   } else {
     res.status(404).send({ message: "Nroduct Not Found" });
   }

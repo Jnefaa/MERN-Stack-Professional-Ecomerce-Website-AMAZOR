@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 //import cors from "express";
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3000",
 
     headers: {
       "Content-Type": "application/json",

@@ -1,18 +1,4 @@
 const data = {
-  users: [
-    {
-      name: "Nefaa",
-      email: "admin@gmail.com",
-      passsword: "123456789",
-      isAdmin: true,
-    },
-    {
-      name: "jmal",
-      email: "admin123@gmail.com",
-      passsword: "123456789",
-      isAdmin: false,
-    },
-  ],
   products: [
     {
       //_id: "1",
@@ -69,6 +55,20 @@ const data = {
       rating: 4.5,
       numReviews: 10,
       description: "hight quality  shirt ",
+    },
+  ],
+  users: [
+    {
+      name: "Nefaa",
+      email: "admin@gmail.com",
+      passsword: "123456789",
+      isAdmin: true,
+    },
+    {
+      name: "jmal",
+      email: "admin123@gmail.com",
+      passsword: "123456789",
+      isAdmin: false,
     },
   ],
 };
